@@ -19,12 +19,4 @@ public class Solution {
         }
         return sum;
     }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] nums = {1, 1, 2, 3, 3, 4, 5, 5, 6, 6, 7};
-
-        int ans = solution.removeDuplicates(nums);
-        System.out.println(ans);
-    }
 }
