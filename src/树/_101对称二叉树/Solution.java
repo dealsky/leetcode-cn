@@ -1,8 +1,9 @@
 package 树._101对称二叉树;
 
+// https://leetcode-cn.com/problems/symmetric-tree/description/
+
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 class TreeNode {
     int val;
