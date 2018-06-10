@@ -1,19 +1,11 @@
 package 树._101对称二叉树;
 
+import 树.TreeNode;
+
 // https://leetcode-cn.com/problems/symmetric-tree/description/
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
 
 public class Solution {
     public boolean isSymmetric(TreeNode root) {

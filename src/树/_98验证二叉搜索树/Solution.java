@@ -1,16 +1,8 @@
 package 树._98验证二叉搜索树;
 
+import 树.TreeNode;
+
 // https://leetcode-cn.com/problems/validate-binary-search-tree/description/
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
 
 public class Solution {
     public boolean isValidBST(TreeNode root) {

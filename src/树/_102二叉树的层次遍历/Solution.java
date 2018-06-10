@@ -1,21 +1,13 @@
 package 树._102二叉树的层次遍历;
 
+import 树.TreeNode;
+
 // https://leetcode-cn.com/problems/binary-tree-level-order-traversal/description/
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
 
 public class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
