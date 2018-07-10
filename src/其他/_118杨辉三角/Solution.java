@@ -3,7 +3,6 @@ package 其他._118杨辉三角;
 // https://leetcode-cn.com/problems/pascals-triangle/description/
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
