@@ -2,10 +2,6 @@ package 其他._268缺失数字;
 
 // https://leetcode-cn.com/problems/missing-number/description/
 
-import sun.java2d.pipe.SolidTextRenderer;
-
-import java.io.Console;
-
 public class Solution {
     public int missingNumber(int[] nums) {
         if (nums.length == 0) {
