@@ -11,52 +11,48 @@ public class Solution {
         int len = nums.length;
         List<List<Integer>> result = new ArrayList<>();
 
+        if (len < 3) {
+            return result;
+        }
+
         Arrays.sort(nums);
 
-        for (int i = 1; i < len - 1; i++) {
-            int pre = i - 1;
-            int suf = i + 1;
+        for (int i = 0; i < len - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
 
-            while (pre >= 0 && suf < len) {
-                if (nums[pre] > 0) {
-                    pre--;
-                    continue;
-                }
+            if (nums[i] > 0) {
+                break;
+            }
 
-                int sum = nums[i] + nums[pre] + nums[suf];
+            int left = i + 1;
+            int right = len - 1;
+
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
 
                 if (sum == 0) {
-                    List<Integer> list = Arrays.asList(nums[pre], nums[i], nums[suf]);
+                    result.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
 
-                    if (result.size() == 0) {
-                        result.add(list);
-                    } else {
-                        if (checkList(result, list)) {
-                            result.add(list);
-                        }
+                    while (left < right && nums[left] == nums[left + 1]) {
+                        left++;
                     }
 
-                    pre--;
-                    suf++;
-                } else if (sum > 0) {
-                    pre--;
+                    while (left < right && nums[right] == nums[right - 1]) {
+                        right--;
+                    }
+                }
+
+                if (sum > 0) {
+                    right--;
                 } else {
-                    suf++;
+                    left++;
                 }
             }
         }
 
         return result;
-    }
-
-    private boolean checkList(List<List<Integer>> result, List list) {
-        for (List current : result) {
-            if (current.get(0).equals(list.get(0)) && current.get(1).equals(list.get(1))) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     public static void main(String[] args) {
