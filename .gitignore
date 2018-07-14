@@ -1,2 +1,6 @@
-.idea
-leetcode-cn.iml
+# IntelliJ project files
+.idea/
+*.iml
+out
+gen
+target/ls
