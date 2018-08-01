@@ -1,15 +1,8 @@
 package 链表._002两数相加;
 
+import 链表.ListNode;
+
 // https://leetcode-cn.com/problems/add-two-numbers/description/
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
 
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
