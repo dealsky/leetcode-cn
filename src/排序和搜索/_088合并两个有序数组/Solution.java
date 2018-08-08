@@ -1,4 +1,4 @@
-package 排序和搜索._88合并两个有序数组;
+package 排序和搜索._088合并两个有序数组;
 
 // https://leetcode-cn.com/problems/merge-sorted-array/description/
 
