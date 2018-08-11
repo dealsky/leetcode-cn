@@ -4,28 +4,41 @@ package 排序和搜索._215数组中的第K个最大元素;
 
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
-        for (int i = 0; i < k; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] > nums[i]) {
-                    swap(nums, i, j);
-                }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for (int num : nums) {
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+
+        int len = max - min + 1;
+        int[] arr = new int[len];
+
+        for (int num : nums) {
+            arr[num - min]++;
+        }
+
+        for (int i = len - 1; i >= 0; i--) {
+            k -= arr[i];
+
+            if (k <= 0) {
+                return i + min;
             }
         }
 
-        return nums[k - 1];
-    }
-
-    private void swap(int[] nums, int a, int b) {
-        int temp = nums[a];
-        nums[a] = nums[b];
-        nums[b] = temp;
+        return 0;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        int[] nums = new int[] {3,2,1,5,6,4};
+        int[] nums = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
 
-        System.out.println(solution.findKthLargest(nums, 2));
+        System.out.println(solution.findKthLargest(nums, 4));
     }
 }
