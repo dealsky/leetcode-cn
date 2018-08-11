@@ -34,11 +34,54 @@ public class Solution {
         return 0;
     }
 
+    public int findKthLargest2(int[] nums, int k) {
+        quickSort(nums, 0, nums.length - 1);
+
+        return nums[nums.length - k];
+    }
+
+    private void quickSort(int[] nums, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int temp = nums[start];
+        int left = start;
+        int right = end;
+
+        while (left < right) {
+            while (left < right && temp <= nums[right]) {
+                right--;
+            }
+
+            while (left < right && temp >= nums[left]) {
+                left++;
+            }
+
+            swap(nums, left, right);
+        }
+
+        swap(nums, start, left);
+
+        quickSort(nums, start, left - 1);
+        quickSort(nums, left + 1, end);
+    }
+
+    private void swap(int[] nums, int a, int b) {
+        if (a == b) {
+            return;
+        }
+
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        int[] nums = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
+        int[] nums = new int[]{-1,2,0};
 
-        System.out.println(solution.findKthLargest(nums, 4));
+        System.out.println(solution.findKthLargest2(nums, 1));
     }
 }
