@@ -4,65 +4,41 @@ package 数学._029两数相除;
 
 public class Solution {
     public int divide(int dividend, int divisor) {
-        if (dividend == 0) {
+        if (dividend == Integer.MIN_VALUE && divisor == -1 || divisor == 0) {
+            return Integer.MAX_VALUE;
+        }
+
+        int neg1 = dividend < 0 ? 1 : 0;
+        int neg2 = divisor < 0 ? 1 : 0;
+        boolean symbol = (neg1 ^ neg2) == 0;
+
+        long left = Math.abs((long) dividend);
+        long right = Math.abs((long) divisor);
+
+        if (left == 0 || left < right) {
             return 0;
         }
 
-        int neg1 = dividend > 0 ? 1 : -1;
-        int neg2 = divisor > 0 ? 1 : -1;
-        int symbol = neg1 == neg2 ? 1 : -1;
+        int result = 0;
+        while (left >= right) {
+            long temp = right;
+            long count = 1L;
 
-        if (dividend == Integer.MIN_VALUE) {
-            divisor = Math.abs(divisor);
-
-            int result = binarySearch(dividend, 1, divisor, dividend);
-        }
-
-        dividend = Math.abs(dividend);
-        divisor = Math.abs(divisor);
-
-        if (dividend <= divisor) {
-            if (dividend == divisor) {
-                return 1;
-            } else {
-                return 0;
+            while (left >= (temp << 1)) {
+                temp <<= 1;
+                count <<= 1;
             }
+
+            left -= temp;
+            result += count;
         }
 
-        int result = binarySearch(1, dividend, divisor, dividend);
-
-        return symbol == 1 ? result : -result;
-    }
-
-    private int binarySearch(int left, int right, int num, int target) {
-        while (left < right) {
-            int mid = (left + right) / 2;
-            long temp = sum(mid, num);
-
-            if (temp >= target) {
-                if (temp == target) {
-                    return left;
-                } else {
-                    right = mid;
-                }
-            } else {
-                left = mid + 1;
-            }
-        }
-
-        return left - 1;
-    }
-
-    private long sum(int mid, int num) {
-        long sum = 0;
-        for (int i = 1; i < num; i++) {
-            sum += mid;
-        }
-
-        return sum;
+        return symbol ? result : -result;
     }
 
     public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE / 4);
+        Solution solution = new Solution();
+
+        System.out.println(solution.divide(Integer.MIN_VALUE, -1));
     }
 }
