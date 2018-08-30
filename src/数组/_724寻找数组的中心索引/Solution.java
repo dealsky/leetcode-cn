@@ -1,4 +1,4 @@
-package 数据结构.数组和字符串._724寻找数组的中心索引;
+package 数组._724寻找数组的中心索引;
 
 // https://leetcode-cn.com/problems/find-pivot-index/description/
 
