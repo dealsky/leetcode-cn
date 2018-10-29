@@ -2,8 +2,6 @@ package 链表._141环形链表;
 
 // https://leetcode-cn.com/problems/linked-list-cycle/description/
 
-import java.util.Spliterator;
-
 class ListNode {
     int val;
     ListNode next;
