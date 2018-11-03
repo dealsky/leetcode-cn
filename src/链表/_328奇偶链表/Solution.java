@@ -5,32 +5,21 @@ import 链表.ListNode;
 // https://leetcode-cn.com/problems/odd-even-linked-list/description/
 
 public class Solution {
-
     public ListNode oddEvenList(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return head;
         }
 
-        ListNode slow = head;
-        ListNode cur = head.next.next;
-        ListNode pre = head.next;
-        boolean flag = true;
-
-        while (cur != null) {
-            if (flag) {
-                pre.next = cur.next;
-                cur.next = slow.next;
-                slow.next = cur;
-                slow = cur;
-                cur = pre;
-            } else {
-                pre = cur;
-            }
-
-            cur = cur.next;
-            flag = !flag;
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = head.next;
+        while (even != null && even.next != null) {
+            odd.next = odd.next.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
         }
-
+        odd.next = evenHead;
         return head;
     }
 
