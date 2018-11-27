@@ -2,7 +2,7 @@ package _160相交链表;
 
 // https://leetcode-cn.com/problems/intersection-of-two-linked-lists/description/
 
-import ListNode;
+import util.ListNode;
 
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

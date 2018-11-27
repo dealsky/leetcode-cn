@@ -2,7 +2,7 @@ package _142环形链表2;
 
 // https://leetcode-cn.com/problems/linked-list-cycle-ii/description/
 
-import ListNode;
+import util.ListNode;
 
 public class Solution {
 

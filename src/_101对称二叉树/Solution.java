@@ -1,6 +1,6 @@
 package _101对称二叉树;
 
-import TreeNode;
+import util.TreeNode;
 
 // https://leetcode-cn.com/problems/symmetric-tree/description/
 

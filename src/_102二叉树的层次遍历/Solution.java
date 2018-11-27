@@ -1,6 +1,6 @@
 package _102二叉树的层次遍历;
 
-import TreeNode;
+import util.TreeNode;
 
 // https://leetcode-cn.com/problems/binary-tree-level-order-traversal/description/
 

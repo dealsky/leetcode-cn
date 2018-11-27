@@ -1,6 +1,6 @@
 package _108将有序数组转换为二叉搜索树;
 
-import TreeNode;
+import util.TreeNode;
 
 import java.util.Arrays;
 

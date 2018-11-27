@@ -1,6 +1,6 @@
 package _98验证二叉搜索树;
 
-import TreeNode;
+import util.TreeNode;
 
 // https://leetcode-cn.com/problems/validate-binary-search-tree/description/
 

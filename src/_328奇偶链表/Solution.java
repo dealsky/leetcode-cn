@@ -1,6 +1,6 @@
 package _328奇偶链表;
 
-import ListNode;
+import util.ListNode;
 
 // https://leetcode-cn.com/problems/odd-even-linked-list/description/
 

@@ -1,6 +1,6 @@
 package _104二叉树的最大深度;
 
-import TreeNode;
+import util.TreeNode;
 
 // https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/description/
 

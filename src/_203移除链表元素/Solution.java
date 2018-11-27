@@ -1,6 +1,6 @@
 package _203移除链表元素;
 
-import ListNode;
+import util.ListNode;
 
 /**
  * @author dealsky

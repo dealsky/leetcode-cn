@@ -1,6 +1,6 @@
 package _002两数相加;
 
-import ListNode;
+import util.ListNode;
 
 // https://leetcode-cn.com/problems/add-two-numbers/description/
 

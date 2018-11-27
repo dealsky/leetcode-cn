@@ -2,7 +2,7 @@ package _105从前序与中序遍历序列构造二叉树;
 
 // https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 
-import TreeNode;
+import util.TreeNode;
 
 public class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
