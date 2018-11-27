@@ -27,7 +27,7 @@ public class Solution {
     }
 
     public void dfs(char[][] grid, int x, int y) {
-        if (x < 0 || x >= grid[0].length || y < 0 || y >= grid.length || grid[x][y] == '0') {
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[0].length || grid[x][y] == '0') {
             return;
         }
 
