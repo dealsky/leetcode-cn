@@ -2,10 +2,7 @@ package _003无重复字符的最长子串;
 
 // https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/description/
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
@@ -77,9 +74,29 @@ public class Solution {
         return max;
     }
 
+    public int lengthOfLongestSubstring4(String s) {
+        int len = s.length();
+        if (len <= 1) {
+            return len;
+        }
+
+        int result = Integer.MIN_VALUE;
+        int[] arr = new int[256];
+        Arrays.fill(arr, -1);
+        for (int left = 0, right = 0; right < len; right++) {
+            char current = s.charAt(right);
+            if (arr[current] != -1) {
+                left = Math.max(left, arr[current] + 1);
+            }
+            result = Math.max(result, right - left + 1);
+            arr[current] = right;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.lengthOfLongestSubstring("1231"));
+        System.out.println(solution.lengthOfLongestSubstring4("abba"));
     }
 }
