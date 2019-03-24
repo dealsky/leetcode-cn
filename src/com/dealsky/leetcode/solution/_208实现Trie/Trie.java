@@ -5,134 +5,107 @@ import java.util.List;
 
 public class Trie {
 
-    private Node head;
+    public char val;
+
+    public List<Trie> children;
+
+    public boolean end;
 
     /**
      * Initialize your data structure here.
      */
     public Trie() {
-        head = new Node('#');
+        val = '#';
+        end = false;
+    }
+
+    public Trie(char val) {
+        this.val = val;
+        end = false;
     }
 
     /**
      * Inserts a word into the trie.
      */
     public void insert(String word) {
-        if (search(word)) {
-            return;
-        }
-
-        Node temp = head;
+        Trie trie = this;
         for (int i = 0; i < word.length(); i++) {
-            List<Node> nexts = temp.nexts;
-            if (nexts == null) {
-                nexts = new ArrayList<>();
-                temp.nexts = nexts;
+            if (trie.children == null) {
+                trie.children = new ArrayList<>();
             }
+            List<Trie> children = trie.children;
 
             boolean flag = true;
-            for (Node next : nexts) {
-                if (next.val == word.charAt(i)) {
-                    temp = next;
+            for (Trie temp : children) {
+                if (temp.val == word.charAt(i)) {
+                    trie = temp;
                     flag = false;
                     break;
                 }
             }
 
             if (flag) {
-                Node node = new Node(word.charAt(i));
-                if (i == word.length() - 1) {
-                    node.end = true;
-                }
-                nexts.add(node);
-                temp = node;
-            } else {
-                if (i == word.length() - 1) {
-                    temp.end = true;
-                }
+                Trie temp = new Trie(word.charAt(i));
+                children.add(temp);
+                trie = temp;
             }
         }
+
+        trie.end = true;
     }
 
     /**
      * Returns if the word is in the trie.
      */
     public boolean search(String word) {
-        int index = 0;
-        Node temp = head;
-        while (temp.nexts != null) {
-            boolean flag = true;
-            List<Node> list = temp.nexts;
-            for (Node node : list) {
-                if (node.val == word.charAt(index)) {
-                    index++;
-                    flag = false;
-                    if (index == word.length()) {
-                        return node.end;
-                    }
-                    temp = node;
-                    break;
-                }
-            }
-
-            if (flag) {
-                break;
-            }
-        }
-
-        return false;
+        return find(word, true);
     }
 
     /**
      * Returns if there is any word in the trie that starts with the given prefix.
      */
     public boolean startsWith(String prefix) {
-        int index = 0;
-        Node temp = head;
-        while (temp.nexts != null) {
+        return find(prefix, false);
+    }
+
+    private boolean find(String word, boolean match) {
+        Trie trie = this;
+        for (char c : word.toCharArray()) {
+            List<Trie> children = trie.children;
+            if (children == null) {
+                return false;
+            }
+
             boolean flag = true;
-            List<Node> list = temp.nexts;
-            for (Node node : list) {
-                if (node.val == prefix.charAt(index)) {
-                    index++;
+            for (Trie temp : children) {
+                if (temp.val == c) {
+                    trie = temp;
                     flag = false;
-                    if (index == prefix.length()) {
-                        return true;
-                    }
-                    temp = node;
                     break;
                 }
             }
 
             if (flag) {
-                break;
+                return false;
             }
         }
 
-        return false;
-    }
-
-    class Node {
-        private char val;
-
-        private List<Node> nexts;
-
-        private boolean end;
-
-        public Node(char val) {
-            this.val = val;
-            end = false;
+        if (match) {
+            return trie.end;
+        } else {
+            return true;
         }
     }
 
     public static void main(String[] args) {
         Trie trie = new Trie();
-        trie.insert("apple");
-        System.out.println(trie.search("apple"));   // 返回 true
-        System.out.println(trie.search("app"));     // 返回 false
-        System.out.println(trie.startsWith("app")); // 返回 true
         trie.insert("app");
-        System.out.println(trie.search("app"));     // 返回 true
+        trie.insert("apple");
+        trie.insert("beer");
+        trie.insert("add");
+        trie.insert("jam");
+        trie.insert("rental");
+        System.out.println(trie.search("apps"));
     }
 }
 
