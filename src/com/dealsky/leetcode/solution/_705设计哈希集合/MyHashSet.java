@@ -1,5 +1,7 @@
 package com.dealsky.leetcode.solution._705设计哈希集合;
 
+// https://leetcode-cn.com/problems/design-hashmap/
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
